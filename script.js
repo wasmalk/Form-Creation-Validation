@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", (event) => {
         event.preventDefault(); // Prevent form submission
 
-        // Retrieve and trim user inputs
+        // Retrieve user inputs
         const username = document.getElementById("username").value.trim();
         const email = document.getElementById("email").value.trim();
         const password = document.getElementById("password").value.trim();
@@ -21,9 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         // Email validation
-        if (!email.includes('@') || !email.includes('.')) {
+        if (!email.includes("@") || !email.includes(".")) {
             isValid = false;
-            messages.push("Email must contain '@' and '.' characters.");
+            messages.push("Please enter a valid email address.");
         }
 
         // Password validation
@@ -36,10 +36,12 @@ document.addEventListener("DOMContentLoaded", () => {
         feedbackDiv.style.display = "block"; // Make feedbackDiv visible
         if (isValid) {
             feedbackDiv.textContent = "Registration successful!";
-            feedbackDiv.style.color = "#28a745"; // Green color for success
+            feedbackDiv.style.color = "#28a745"; // Green for success
+            feedbackDiv.style.backgroundColor = "#d4edda"; // Light green background
         } else {
-            feedbackDiv.innerHTML = messages.join("<br>"); // Join messages with <br>
-            feedbackDiv.style.color = "#dc3545"; // Red color for errors
+            feedbackDiv.innerHTML = messages.join("<br>"); // Join error messages with line breaks
+            feedbackDiv.style.color = "#dc3545"; // Red for error
+            feedbackDiv.style.backgroundColor = "#f8d7da"; // Light red background
         }
     });
 });
